@@ -44,13 +44,13 @@ def run_algorithm(data, user_vector, total_results, similarity_scores):
 
 # user input
 # user_input = "show me attendance report for gusion, aamon"
-user_input: str = input("Tell me what do u want?: ")
+user_input: str = input("\nTell me what do u want?: ")
 print("user inputted: ", user_input)
-user_vector = text_to_vector(user_input.lower()).flatten()
+user_vector = text_to_vector(user_input.lower().strip()).flatten()
 
 # calling vectors
-res_report_types = run_algorithm(report_types, user_vector, 1, 0.6)
-res_report_employees = run_algorithm(report_employees, user_vector, 10, 0.2)
+res_report_types = run_algorithm(report_types, user_vector, 1, 0.3)
+res_report_employees = run_algorithm(report_employees, user_vector, 10, 0.3)
 
-print("Report types possibility", res_report_types)
+print("\nReport types possibility", res_report_types)
 print("Employees possibility", res_report_employees)

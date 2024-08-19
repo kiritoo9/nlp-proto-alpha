@@ -27,3 +27,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
     - Solutions
         - Considering to combine with FuzzySearch
         - or Ruled base algorithm
+
+## [Proto-1.0.1-Alpha] - 2024-08-19
+
+### Change
+- Lower similiarity score for employees
+    - From 0.6 -> 0.3
+
+### Reports
+- With make user input clean .lower() .strip() it increase scores of similiarity
+- Assumed range of similiarity around 0.3 to 0.6 for all models

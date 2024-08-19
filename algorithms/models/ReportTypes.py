@@ -18,8 +18,8 @@ report_types: [Model] = [
     Model(
         key="leaves",
         type="value",
-        text="cuti reports",
-        vector="cuti reports"
+        text="leaves reports",
+        vector="leaves reports"
     ),
     Model(
         key="overtimes",
