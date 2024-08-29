@@ -56,3 +56,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
     - `august to/until december`
     - specific date like: `YYYY-MM-DD` to `YYYY-MM-DD`
     - etc.
+
+## [Proto-1.0.3-Alpha] - 2024-08-29
+
+### Add
+- Algorithm for typo handling
+    - Some tricky logic added combined with existing library
+
+- Algorithm for extracting date
+    - Still lot of static validation, needs more improvments
+
+### Reports
+- Solved for issue date so far, but there will be lot of possibilities of date issue
+- Need to change or improve algorithm to handle date extraction

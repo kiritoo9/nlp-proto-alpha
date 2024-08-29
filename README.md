@@ -1,7 +1,7 @@
 ## NLP Prototype Alpha
-Transalting human desire to machine output
+Transalting human words to machine output
 
-## Algorithm:Model
+## LLM
 GPT:SBERT-paraphrase-MiniLM-L6-v2
 
 ## Case
@@ -22,4 +22,4 @@ python algorithm/algorithm_you_want_to_run.py
 3.11
 
 ## App version
-Proto-1.0.2-Alpha
+Proto-1.0.3-Alpha

@@ -1,13 +1,18 @@
-from dataclasses import replace
 import os
 os.environ["KMP_DUPLICATE_LIB_OK"] = 'TRUE'
 
+import warnings
+from dataclasses import replace
 from spellchecker import SpellChecker
 from sentence_transformers import SentenceTransformer
 import numpy as np
 import faiss
+from extract_date import extract_dates_and_range
 
 print("loading LLM..")
+
+# hide warning
+warnings.simplefilter(action='ignore', category=FutureWarning)
 
 # using SBERT:Similar Models
 model = SentenceTransformer('paraphrase-MiniLM-L6-v2')
@@ -51,6 +56,34 @@ def run_algorithm(data, word_vector, total_results, similarity_scores):
     return [keys[index] for index, score in zip(I[0], D[0]) if score >= similarity_scores]
 
 
+def check_word(word: str, res_report_types: [str], res_report_employees: [str], res_report_companies: [str]):
+    # translate string into vector
+    word_vector = text_to_vector(word.lower().strip()).flatten()
+
+    # run algorithm for report types
+    _rrt = run_algorithm(report_types, word_vector, 1, 0.6)
+    if len(_rrt) > 0:
+        for i in range(len(_rrt)):
+            if _rrt[i] not in res_report_types:
+                res_report_types.append(_rrt[i])
+
+    # run algorithm for report employees
+    _rre = run_algorithm(report_employees, word_vector, 10, 0.5)
+    if len(_rre) > 0:
+        for i in range(len(_rre)):
+            if _rre[i] not in res_report_employees:
+                res_report_employees.append(_rre[i])
+
+    # run algorithm for report companies
+    _rrc = run_algorithm(report_companies, word_vector, 10, 0.5)
+    if len(_rrc) > 0:
+        for i in range(len(_rrc)):
+            if _rrc[i] not in res_report_companies:
+                res_report_companies.append(_rrc[i])
+    
+    return res_report_types, res_report_employees, res_report_companies
+
+
 def extraction(words: str):
     # split by space(s) into single word before generate:check the vector
     words = user_input.split(" ")
@@ -59,37 +92,27 @@ def extraction(words: str):
     res_report_employees = []
     res_report_companies = []
     for i in range(len(words)):
-        # fix typos
-        # words[i] = str(spell.candidates(words[i]))
+        word = words[i]
+        typo_possibility = False
 
-        # translate string into vector
-        word_vector = text_to_vector(words[i].lower().strip()).flatten()
+        while True:
+            if typo_possibility:
+                word = str(spell.candidates(word)) # check for the typo
 
-        # run algorithm for report types
-        _rrt = run_algorithm(report_types, word_vector, 1, 0.6)
-        if len(_rrt) > 0:
-            for i in range(len(_rrt)):
-                if _rrt[i] not in res_report_types:
-                    res_report_types.append(_rrt[i])
+            res_report_types, res_report_employees, res_report_companies = check_word(word, res_report_types, res_report_employees, res_report_companies)
+            if len(res_report_types) > 0 or len(res_report_employees) > 0 or len(res_report_companies) > 0:
+                break
+            else:
+                if typo_possibility:
+                    break
 
-        # run algorithm for report employees
-        _rre = run_algorithm(report_employees, word_vector, 10, 0.5)
-        if len(_rre) > 0:
-            for i in range(len(_rre)):
-                if _rre[i] not in res_report_employees:
-                    res_report_employees.append(_rre[i])
+                typo_possibility = True
 
-        # run algorithm for report companies
-        _rrc = run_algorithm(report_companies, word_vector, 10, 0.5)
-        if len(_rrc) > 0:
-            for i in range(len(_rrc)):
-                if _rrc[i] not in res_report_companies:
-                    res_report_companies.append(_rrc[i])
 
     # log response
-    print("\nReport types possibility", res_report_types)
-    print("Employees possibility", res_report_employees)
-    print("Companies possibility", res_report_companies)
+    print("\nReport types possibility: ", res_report_types)
+    print("Employees possibility: ", res_report_employees)
+    print("Companies possibility: ", res_report_companies)
 
 
 # get user input
@@ -103,3 +126,4 @@ while True:
     # run algorithm
     print("user inputted: ", user_input)
     extraction(user_input)
+    print("Date parameter: ", extract_dates_and_range(user_input))
