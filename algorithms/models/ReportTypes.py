@@ -12,19 +12,19 @@ report_types: [Model] = [
     Model(
         key="attendances",
         type="value",
-        text="attendances reports",
-        vector="attendances reports"
+        text="attendance",
+        vector="attendance"
     ),
     Model(
         key="leaves",
         type="value",
-        text="leaves reports",
-        vector="leaves reports"
+        text="leave",
+        vector="leave"
     ),
     Model(
         key="overtimes",
         type="value",
-        text="overtimes reports",
-        vector="overtimes reports"
+        text="overtime",
+        vector="overtime"
     ),
 ]

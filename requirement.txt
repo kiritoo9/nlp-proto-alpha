@@ -3,3 +3,5 @@ faiss-cpu
 torch
 transformers
 sentence-transformers
+spacy
+pyspellchecker

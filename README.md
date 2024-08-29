@@ -13,10 +13,13 @@ HRIS-Report
 ```bash
 pip install -r requirements.txt
 ```
-3. then run file with algorithm you want to run
+3. then run file inside dir /algorithm you want to run
 ```bash
-python algorithm_you_want_to_run.py
+python algorithm/algorithm_you_want_to_run.py
 ```
 
 ## Python version
 3.11
+
+## App version
+Proto-1.0.2-Alpha

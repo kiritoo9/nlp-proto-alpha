@@ -37,3 +37,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Reports
 - With make user input clean .lower() .strip() it increase scores of similiarity
 - Assumed range of similiarity around 0.3 to 0.6 for all models
+
+## [Proto-1.0.2-Alpha] - 2024-08-29
+
+### Add
+- Spellchecking for typo (still got some issues)
+- Companies data models
+
+### Change
+- Vector checking
+    - Split sentence into single word to increase similiarity score
+
+### Reports
+- I need to know how to generate knowledge based for each transactional datas
+- Also how to detect type of dates user inputted, such like:
+    - `this week`
+    - `this month`
+    - `august to/until december`
+    - specific date like: `YYYY-MM-DD` to `YYYY-MM-DD`
+    - etc.
