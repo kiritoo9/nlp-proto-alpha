@@ -60,10 +60,7 @@ def extract_dates_and_range(text):
     dates = [ent.text for ent in doc.ents if ent.label_ == "DATE"]
     
     # identify keywords indicating a normal date or range date
-    # the response different is normal date will return as a string
-    # otherwise with list|array
-    # so it will converted into list|array right before send as response
-    response = None
+    response = []
     range_keywords = ["to ", "until", "and"]
     unnecessary_keywords = ["between"]
 
@@ -86,11 +83,9 @@ def extract_dates_and_range(text):
         if separator is not None:
             response = [date_convertion_handler(word.lower().strip()) for word in date_str.split(separator) if word is not None]
         else:
-            response = date_convertion_handler(date_str)
+            response.append(date_convertion_handler(date_str))
 
     # send response
-    if isinstance(response, str):
-        return [response] # convert string into list to standarize format response
     return response
 
 
