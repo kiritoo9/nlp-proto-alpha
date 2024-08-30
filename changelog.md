@@ -69,3 +69,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Reports
 - Solved for issue date so far, but there will be lot of possibilities of date issue
 - Need to change or improve algorithm to handle date extraction
+
+## [Proto-1.0.4-Alpha] - 2024-08-30
+
+### Add
+- Translate language
+    - Check possibility for translating to english as standard language for data model
+
+### Reports
+- I think the project size kinda big because of data models
+- Also need to test it in real case
+- But first, I need to make it as a service so user can access it from frontend
