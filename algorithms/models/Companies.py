@@ -12,8 +12,8 @@ companies: [Model] = [
     Model(
         key="001",
         type="value",
-        text="pt akatsuki",
-        vector="pt akatsuki"
+        text="akatsuki",
+        vector="akatsuki"
     ),
     Model(
         key="002",
@@ -24,7 +24,7 @@ companies: [Model] = [
     Model(
         key="003",
         type="value",
-        text="pt others",
-        vector="pt others"
+        text="others",
+        vector="others"
     ),
 ]

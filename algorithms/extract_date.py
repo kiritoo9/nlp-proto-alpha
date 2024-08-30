@@ -48,6 +48,15 @@ def date_convertion_handler(word: str):
             # means the format of this date doesn't match so skip it
             pass
 
+     # case: %B %Y
+    if value is None:
+        try:
+            date_obj = datetime.strptime(word, "%B %Y")
+            value = date_obj.strftime("%Y-%m")
+        except ValueError as e:
+            # means the format of this date doesn't match so skip it
+            pass
+
     # response
     return value
 

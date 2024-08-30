@@ -80,3 +80,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - I think the project size kinda big because of data models
 - Also need to test it in real case
 - But first, I need to make it as a service so user can access it from frontend
+
+## [Proto-1.0.4-1-Alpha] - 2024-08-30
+
+### Add
+- REST APi
+    - Now the service can access from outside
+
+### Reports
+- It's actually released as a service, just need to test it out!

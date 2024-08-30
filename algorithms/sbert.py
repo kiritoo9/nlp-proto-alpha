@@ -8,7 +8,7 @@ from googletrans import Translator
 from sentence_transformers import SentenceTransformer
 import numpy as np
 import faiss
-from extract_date import extract_dates_and_range
+from .extract_date import extract_dates_and_range
 
 print("loading LLM..")
 
@@ -23,9 +23,9 @@ def text_to_vector(text):
 
 
 # calling data models
-from models import ReportTypes
-from models import Employees
-from models import Companies
+from .models import ReportTypes
+from .models import Employees
+from .models import Companies
 
 report_types = ReportTypes.report_types
 report_types = [replace(rt, vector=text_to_vector(rt.vector).flatten()) for rt in report_types]
@@ -88,7 +88,7 @@ def check_word(word: str, res_report_types: [str], res_report_employees: [str], 
 
 def extraction(words: str):
     # split by space(s) into single word before generate:check the vector
-    words = user_input.split(" ")
+    words = words.split(" ")
 
     res_report_types = []
     res_report_employees = []
@@ -126,7 +126,7 @@ def extraction(words: str):
     return res_report_types, res_report_employees, res_report_companies
 
 
-def init(words: str, debug=True):
+def init(user_input: str, debug=True):
     if debug:
         print("user inputted: ", user_input)
 
