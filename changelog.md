@@ -89,3 +89,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Reports
 - It's actually released as a service, just need to test it out!
+
+## [Proto-1.0.4-2-Alpha] - 2024-08-31
+
+### Add
+- More filter logic for extracting date

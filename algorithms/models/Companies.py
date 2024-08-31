@@ -10,21 +10,15 @@ class Model:
 
 companies: [Model] = [
     Model(
-        key="001",
+        key="4551d565-a6af-4d15-a857-f61748f783aa",
         type="value",
         text="akatsuki",
         vector="akatsuki"
     ),
     Model(
-        key="002",
+        key="81333dc8-49b4-49d4-8c81-6f6c6fc827d4",
         type="value",
         text="hik",
         vector="hik"
-    ),
-    Model(
-        key="003",
-        type="value",
-        text="others",
-        vector="others"
-    ),
+    )
 ]

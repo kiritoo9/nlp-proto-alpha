@@ -22,4 +22,4 @@ python algorithm/algorithm_you_want_to_run.py
 3.11
 
 ## App version
-Proto-1.0.4-1-Alpha
+Proto-1.0.4-2-Alpha
